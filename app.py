@@ -7,9 +7,9 @@ from db import DB
 from scraper import ForexScraper
 from cron_job import CronJob
 
-api = FastAPI(title="Forex History API")
+app = FastAPI(title="Forex History API")
 
-api.add_middleware(
+app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_credentials=True,
@@ -29,7 +29,7 @@ class ForexResponse(BaseModel):
     close_rate: float
     volume: int
 
-@api.post("/api/forex-data")
+@app.post("/api/forex-data")
 async def get_forex_data(from_currency: str, to_currency: str, period: str) -> List[ForexResponse]:
     print(f"Fetching data for {from_currency}-{to_currency} for period {period}...")
     start_date, end_date = db.get_period_dates(period)
@@ -52,10 +52,10 @@ async def get_forex_data(from_currency: str, to_currency: str, period: str) -> L
 
 
 
-@api.on_event("shutdown")
+@app.on_event("shutdown")
 def shutdown_event():
     cron_job.shutdown()
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(api, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=8000)
