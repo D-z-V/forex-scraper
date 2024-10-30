@@ -23,7 +23,6 @@ class CronJob:
             for period in periods:
                 start_date, end_date = self.db.get_period_dates(period)
                 # data = self.db.fetch_from_db(from_currency, to_currency, start_date, end_date)
-                print(f"Fetching data for {from_currency}-{to_currency} for period {period}... {start_date} to {end_date}")
                 missing_ranges = self.db.fetch_missing_dates(from_currency, to_currency, start_date, end_date)
                 if missing_ranges:
                     for start_missing, end_missing in missing_ranges:
