@@ -44,7 +44,7 @@ ALLOWED_ORIGINS=http://localhost:5173,http://yourfrontend.com
 ## Project Structure
 
 ```
-forex-history-api/
+forex-scraper-api/
 ├── main.py
 ├── requirements.txt
 ├── services/
