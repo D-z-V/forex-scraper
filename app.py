@@ -8,12 +8,18 @@ from functools import lru_cache
 from services.db import DB
 from services.scraper import ForexScraper
 from services.cron_job import CronJob
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+allowed_origins = os.getenv("ALLOWED_ORIGINS", "").split(",")
 
 app = FastAPI(title="Forex History API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
