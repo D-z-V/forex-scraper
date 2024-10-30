@@ -1,6 +1,6 @@
 from apscheduler.schedulers.background import BackgroundScheduler
-from scraper import ForexScraper
-from db import DB
+from services.scraper import ForexScraper
+from services.db import DB
 
 class CronJob:
     def __init__(self, db: DB, scraper: ForexScraper):
