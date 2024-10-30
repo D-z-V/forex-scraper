@@ -36,6 +36,11 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+4. Create a .env file with the following variables:
+```bash
+ALLOWED_ORIGINS=http://localhost:5173,http://yourfrontend.com  
+```
+
 ## Project Structure
 
 ```
