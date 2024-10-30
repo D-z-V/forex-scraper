@@ -3,9 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
 
-from db import DB
-from scraper import ForexScraper
-from cron_job import CronJob
+from services.db import DB
+from services.scraper import ForexScraper
+from services.cron_job import CronJob
 
 app = FastAPI(title="Forex History API")
 
